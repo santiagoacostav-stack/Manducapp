@@ -1,0 +1,248 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>maducapp · Operación</title><style>
+:root{--bg:#f5f2ec;--ink:#242822;--muted:#73786c;--green:#234c3a;--line:#e1e4db;--purple:#7247a3}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px system-ui,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer;border:1px solid var(--line);padding:10px 15px;border-radius:10px;background:white;color:var(--ink)}button:hover{border-color:var(--green)}button.primary{background:var(--green);color:white}button:disabled{opacity:.45;cursor:default}aside{width:235px;position:fixed;inset:0 auto 0 0;background:#fff;padding:30px 20px;border-right:1px solid var(--line)}.logo{font-size:29px;font-weight:800;letter-spacing:-1.5px}.sub{font-size:12px;color:var(--muted)}nav{margin-top:36px}nav button{display:block;width:100%;text-align:left;border:0;background:none;margin:5px 0}nav button.active{background:#e9f0e8;color:var(--green);font-weight:700}.sidebottom{position:absolute;bottom:25px;font-size:12px;color:var(--muted)}main{margin-left:235px;padding:24px 36px;max-width:1550px}.top{display:flex;justify-content:space-between;gap:20px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:18px}.demo{font-size:12px;color:#776144;background:#f4e9d4;padding:9px 13px;border-radius:8px}.head{display:flex;align-items:center;justify-content:space-between;margin:30px 0 22px}h1{font-size:30px;letter-spacing:-1px;margin:0 0 6px}h2{font-size:19px;margin:0 0 15px}h3{margin:0 0 8px;font-size:16px}p{line-height:1.5}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.two{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px}.stat b{font-size:30px;display:block;margin-top:10px}.purple{background:#f7f2fc;border-color:#dfd0ef}.purple h2,.purple h3{color:var(--purple)}.note{padding:17px 0;border-top:1px solid #e4d8ef}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.badge{font-size:12px;display:inline-block;padding:5px 9px;border-radius:20px;background:#edf1e9}.red{background:#fce6e2;color:#9e3227}.yellow{background:#fff1ce;color:#846200}.green{background:#e4f2e9;color:#245b3b}.gray{background:#eceeed;color:#68716b}.violet{background:#e8dcf5;color:#6c3d99}table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:15px 9px;border-bottom:1px solid var(--line);font-size:14px}th{color:var(--muted);font-size:12px;font-weight:600}input,select,textarea{border:1px solid #ccd2c7;border-radius:8px;padding:10px;background:#fff;max-width:100%;width:100%}label{display:block;font-size:13px;margin:12px 0 6px}input[type=checkbox]{width:18px;height:18px;accent-color:var(--green)}.controls{display:flex;gap:8px;flex-wrap:wrap}.controls select{width:auto}.metric{height:8px;border-radius:9px;background:#e8ebdf;margin-top:8px;overflow:hidden}.metric span{display:block;height:100%;background:#9aaf86}.list{padding:13px 0;border-bottom:1px solid var(--line)}dialog{border:0;border-radius:18px;width:520px;max-width:94%;padding:28px;box-shadow:0 20px 100px #0003}dialog::backdrop{background:#17201866}.scroll{overflow:auto}.empty{padding:24px;color:var(--muted)}#toast{position:fixed;bottom:25px;right:25px;background:#253e30;color:#fff;padding:13px 20px;border-radius:12px;display:none;z-index:9}.small{font-size:12px}.sp{margin-top:18px}@media(max-width:900px){aside{position:static;width:auto;padding:15px}nav{display:flex;overflow:auto;margin-top:12px}nav button{white-space:nowrap;width:auto}.sidebottom{display:none}main{margin:0;padding:20px}.two{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.top{align-items:flex-start;flex-direction:column}}@media(max-width:550px){.grid{grid-template-columns:1fr}.head{gap:10px;align-items:flex-start}.card{padding:16px}h1{font-size:25px}}
+
+.menu-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}.menu-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}.menu-day{min-height:115px;text-align:left;padding:11px;overflow-wrap:anywhere;display:flex;flex-direction:column;gap:8px}.menu-day.selected{outline:2px solid var(--green);background:#edf3e9}.menu-day.outside{opacity:.5}.day-label{font-size:12px;font-weight:700;color:var(--muted);text-align:center;padding:8px}.menu-week{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.week-day{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;text-align:left;min-height:250px}.week-day.selected{outline:2px solid var(--green)}.week-day .meal-name{display:block;font-size:17px;font-weight:700;margin:14px 0}.week-day small{display:block;color:var(--muted);line-height:1.5;margin-top:9px}.menu-detail{margin-top:22px}.menu-pill{font-size:11px;color:var(--green);background:#edf3e9;border-radius:6px;padding:6px}.menu-title{font-size:13px;line-height:1.4}.menu-legend{margin-bottom:16px;display:flex;gap:10px;flex-wrap:wrap}.menu-form{max-height:75vh;overflow:auto}button[aria-pressed=true]{background:var(--green);color:white}@media(max-width:1100px){.menu-week{grid-template-columns:repeat(2,minmax(0,1fr))}.menu-grid{min-width:670px}}@media(max-width:550px){.menu-week{grid-template-columns:1fr}.week-day{min-height:0}.menu-toolbar{align-items:flex-start}}
+@media(max-width:600px){
+aside,main{padding:14px}
+nav button,button,select{min-height:44px}
+input,textarea,select{font-size:16px;min-width:0}
+.top .controls{width:100%;min-width:0}
+.head,.row{flex-wrap:wrap}
+.card,.two>*,.grid>*{min-width:0;overflow-wrap:anywhere}
+.card.scroll table{min-width:560px}
+.menu-week{grid-template-columns:minmax(0,1fr)}
+.menu-grid{min-width:0;gap:3px}
+.menu-grid .day-label{padding:5px 0;font-size:10px}
+.menu-day{padding:4px;min-height:56px;gap:3px}
+.menu-day .menu-title{font-size:10px;line-height:1.2}
+.menu-pill{padding:2px;font-size:9px}
+dialog{max-height:90dvh;overflow:auto;padding:16px}
+.menu-form{max-height:57dvh}
+}
+</style><aside><div class="logo">maducapp<span style="color:#a7b791">.</span></div><div class="sub">BENDITA MANDUCA</div><nav id="nav"></nav><div class="sidebottom">Cocina, cuidado y seguimiento.<br><br>Versión de prueba · 01</div></aside><main><div class="top"><span class="demo">DEMO · Clientes ficticios · Guardado en este navegador</span><div class="controls"><select id="role" aria-label="Vista de prueba"><option value="admin">Administrador</option><option value="nutri">Nutriólogo</option><option value="client">Cliente</option></select><select id="professional" aria-label="Profesional de prueba"></select></div></div><div id="content"></div></main><dialog id="modal"></dialog><div id="toast" role="status"></div><script>
+const KEY='maducapp:prototype:01';const TODAY='2026-11-20';
+const seed=()=>({pros:[{id:'p1',name:'Dra. Elena Ruiz',email:'elena@example.com'},{id:'p2',name:'Lic. Daniel Soto',email:'daniel@example.com'}],clients:[{id:'c1',name:'Ana Martínez',kind:'Plan nutricional',pro:'p1',active:true,total:20,used:6,water:1500,goal:2500,weight:68,checks:[true,true,false,false,false],note:'Hoy tuve menos apetito en la mañana.',portions:[180,150,150]},{id:'c2',name:'Luis Herrera',kind:'Plan nutricional',pro:'p2',active:true,total:20,used:10,water:2000,goal:3000,weight:82,checks:[true,false,false,false,false],note:'',portions:[200,180,150]},{id:'c3',name:'María Torres',kind:'Comida de oficina',pro:'',active:true,total:5,used:2,portions:[180,150,150]}],notes:[{id:'n1',client:'c1',pro:'p1',text:'Revisar registro de agua con Ana en el seguimiento. No cambiar su meta sin confirmar.',status:'Pendiente',date:'2026-11-20 09:15'},{id:'n2',client:'c2',pro:'p2',text:'Confirmar con Luis si las porciones del almuerzo resultan cómodas.',status:'En proceso',date:'2026-11-19 17:30'}],orders:[{id:'o1',client:'c1',date:TODAY,status:'Por preparar'},{id:'o2',client:'c2',date:TODAY,status:'Por preparar'},{id:'o3',client:'c3',date:TODAY,status:'Por preparar'},{id:'o4',client:'c1',date:'2026-11-23',status:'Por preparar'}],stock:[{id:'chicken',name:'Pollo',unit:'kg',qty:.4,checked:true,ordered:0},{id:'rice',name:'Arroz seco',unit:'kg',qty:.18,checked:true,ordered:0},{id:'veg',name:'Verduras limpias',unit:'kg',qty:1,checked:true,ordered:0},{id:'sauce',name:'Salsa verde',unit:'L',qty:0,checked:false,ordered:0}],audit:[]});
+let db;try{db=JSON.parse(localStorage.getItem(KEY))||seed()}catch{db=seed()}let role='admin',pro='p1',page='home',current=null;
+const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const client=id=>db.clients.find(c=>c.id===id),professional=id=>db.pros.find(p=>p.id===id)?.name||'Sin asignar';const visible=()=>db.clients.filter(c=>role==='admin'||c.pro===pro&&c.kind==='Plan nutricional');const allowed=id=>visible().some(c=>c.id===id);const uid=()=>crypto.randomUUID();
+function save(){localStorage.setItem(KEY,JSON.stringify(db))}function audit(id,field,before,after){db.audit.unshift({client:id,field,before,after,at:new Date().toLocaleString('es-MX'),who:role==='admin'?'Administrador':professional(pro)})}function toast(t){$('toast').textContent=t;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',2800)}
+const badge=(t,c='')=>`<span class="badge ${c}">${esc(t)}</span>`;function go(p,id=null){page=p;current=id;render()}
+function head(t,s,extra=''){return `<div class="head"><div><h1>${t}</h1><div class="muted">${s}</div></div>${extra}</div>`}function profileButton(id){return `<button onclick="go('profile','${id}')">Ver dashboard ↗</button>`}
+function render(){if(role==='client')return renderClient();const items=role==='admin'?[['home','Resumen del día'],['clients','Clientes y planes'],['menu','Calendario de menú'],['workbench','Mesa de porcionado'],['kitchen','Cocina y porciones'],['stock','Insumos y compras'],['delivery','Entregas y paquetes'],['notes','Notas del nutriólogo'],['pros','Profesionales'],['service','Servicios y pagos']]:[['home','Mi seguimiento'],['clients','Mis clientes'],['menu','Calendario de menú'],['notes','Mis notas']];$('nav').innerHTML=items.map(([p,t])=>`<button class="${page===p?'active':''}" onclick="go('${p}')">${t}${p==='notes'?' · '+db.notes.filter(n=>n.status!=='Atendida'&&(role==='admin'||n.pro===pro&&allowed(n.client))).length:''}</button>`).join('');$('professional').hidden=role==='admin';$('professional').innerHTML=db.pros.map(p=>`<option value="${p.id}" ${p.id===pro?'selected':''}>${esc(p.name)}</option>`).join('');const fn={home,clients,profile,kitchen,stock,delivery,notes,pros,service,menu,workbench}[page];if(role!=='admin'&&!['home','clients','profile','notes','menu'].includes(page)){page='home'}$('content').innerHTML=({home,clients,profile,kitchen,stock,delivery,notes,pros,service,menu,workbench}[page])();}
+function noteCards(id=null){const notes=db.notes.filter(n=>(!id||n.client===id)&&(role==='admin'||allowed(n.client)));return notes.map(n=>`<div class="note"><div class="row"><h3>${esc(client(n.client)?.name)}</h3>${badge(n.status,'violet')}</div><div class="small muted">${esc(professional(n.pro))} · ${esc(n.date)}</div><p>${esc(n.text)}</p><div class="row">${profileButton(n.client)}${role==='admin'?`<select style="width:150px" aria-label="Estado de nota" onchange="noteStatus('${n.id}',this.value)">${['Pendiente','En proceso','Atendida'].map(v=>`<option ${v===n.status?'selected':''}>${v}</option>`).join('')}</select>`:''}</div></div>`).join('')||'<p class="empty">No hay notas para mostrar.</p>'}
+function home(){const v=visible();return head(role==='admin'?'Todo listo para organizar el día':'Una mirada a tus clientes','Viernes 20 de noviembre · Jornada de demostración')+`<div class="grid"><div class="card stat">${role==='admin'?'Clientes activos':'Clientes asignados'}<b>${v.filter(c=>c.active).length}</b><span class="muted">${role==='admin'?'Planes y comida de oficina':'Seguimiento personalizado'}</span></div><div class="card stat">${role==='admin'?'Entregas pendientes':'Registros de agua'}<b>${role==='admin'?db.orders.filter(o=>o.date===TODAY&&o.status!=='Entregado').length:v.filter(c=>c.water<c.goal).length}</b><span class="muted">${role==='admin'?'Confirmar después de entregar':'Por debajo de la meta registrada'}</span></div><div class="card stat">Notas por atender<b>${db.notes.filter(n=>n.status!=='Atendida'&&(role==='admin'||n.pro===pro&&allowed(n.client))).length}</b><span class="muted">Seguimiento de administración</span></div></div><div class="two"><section class="card purple"><h2>Notas del nutriólogo</h2><div class="small muted">Leer una nota no la marca como atendida.</div>${noteCards()}</section><section><div class="card"><h2>${role==='admin'?'Próximas preparaciones':'Mis clientes'}</h2>${v.map(c=>`<div class="list"><div class="row"><b>${esc(c.name)}</b>${badge(c.kind==='Comida de oficina'?'Oficina':'Plan')}</div><p class="small muted">${esc(c.kind)} · ${c.total-c.used} comidas restantes</p>${profileButton(c.id)}</div>`).join('')}</div></section></div>`}
+function clients(){return head(role==='admin'?'Clientes y planes':'Mis clientes','Abre el perfil para consultar el dashboard y su historial.',role==='admin'?'<button class="primary" onclick="newClient()">+ Nuevo cliente</button>':'')+`<input aria-label="Buscar cliente" placeholder="Buscar por nombre…" oninput="document.querySelectorAll('[data-name]').forEach(r=>r.hidden=!r.dataset.name.includes(this.value.toLowerCase()))"><div class="card scroll sp"><table><tr><th>Cliente</th><th>Servicio</th><th>Profesional</th><th>Estado</th><th></th></tr>${visible().map(c=>`<tr data-name="${esc(c.name.toLowerCase())}"><td><b>${esc(c.name)}</b></td><td>${esc(c.kind)}</td><td>${esc(professional(c.pro))}</td><td>${badge(c.active?'Activo':'Inactivo',c.active?'green':'gray')}</td><td>${profileButton(c.id)}</td></tr>`).join('')}</table></div>`}
+function profile(){if(!allowed(current))return head('Perfil no disponible','Selecciona un cliente asignado.');let c=client(current),nutrition=c.kind==='Plan nutricional';return head(esc(c.name),esc(c.kind)+' · Dashboard del cliente',`<button onclick="go('clients')">← Clientes</button>`)+`<div class="two"><section><div class="card"><div class="row"><h2>${nutrition?'Avance nutricional':'Paquete de oficina'}</h2>${badge(c.active?'Servicio activo':'Servicio inactivo',c.active?'green':'gray')}</div>${nutrition?`<div class="grid"><div>Comidas registradas<b style="display:block;font-size:25px">${c.checks.filter(Boolean).length}/5</b></div><div>Agua<b style="display:block;font-size:25px">${c.water} ml</b><span class="small muted">Meta: ${c.goal} ml</span></div><div>Último peso<b style="display:block;font-size:25px">${c.weight} kg</b></div></div><div class="metric"><span style="width:${(c.goal>0?Math.min(c.water/c.goal*100,100):0)}%"></span></div><p class="small muted">Registro reportado por el cliente. Una casilla pendiente no confirma que no comió.</p>${c.checks.map((v,i)=>`<div class="list row"><span>Comida ${i+1}</span>${badge(v?'Registrada':'Sin registrar',v?'green':'gray')}</div>`).join('')}<p><b>Notas de mi día</b><br>${esc(c.note||'Sin notas.')}</p>${role==='admin'?`<button onclick="editMetrics('${c.id}')">Corregir registro de prueba</button>`:''}`:'<p>Atención por WhatsApp. Este cliente no tiene cuenta de acceso.</p>'}</div><div class="card"><h2>Porciones para cocina</h2><p class="muted">Pollo en salsa verde · Comida 3 de demostración</p><div class="grid">${['Pollo crudo','Arroz cocido','Verduras limpias'].map((x,i)=>`<div>${x}<b style="display:block">${(activeVersion(c.id,TODAY)?.grams||c.portions)[i]} g</b></div>`).join('')}</div>${role==='admin'?`<button class="sp" onclick="editProgram('${c.id}')">Editar porciones</button>`:''}</div><div class="card"><h2>Historial de cambios</h2>${db.audit.filter(a=>a.client===c.id).map(a=>`<div class="list"><b>${esc(a.field)}</b><p>${esc(a.before)} → ${esc(a.after)}</p><span class="small muted">${esc(a.at)} · ${esc(a.who)}</span></div>`).join('')||'<p class="muted">Aún no hay correcciones. Los cambios se conservarán aquí.</p>'}</div></section><section><div class="card"><h2>Servicio y asignación</h2><p>${c.total-c.used} restantes de ${c.total} comidas · ${c.used} entregadas</p>${nutrition?`<label>Nutriólogo asignado</label>${role==='admin'?`<select aria-label="Nutriólogo asignado" onchange="assign('${c.id}',this.value)"><option value="">Sin asignar</option>${db.pros.map(p=>`<option value="${p.id}" ${c.pro===p.id?'selected':''}>${esc(p.name)}</option>`).join('')}</select>`:`<p>${esc(professional(c.pro))}</p>`}`:''}<p class="small muted">El checklist de ingesta no descuenta entregas.</p></div><div class="card purple"><div class="row"><h2>Notas del nutriólogo</h2>${role==='nutri'?`<button onclick="addNote('${c.id}')">+ Nota</button>`:''}</div>${noteCards(c.id)}</div>${nutrition?programPanel(c):''}</section></div>`}
+function notes(){return head(role==='admin'?'Notas del nutriólogo':'Mis notas','Cada nota conserva su autor y estado de atención.')+`<div class="card purple">${noteCards()}</div>`}
+function pros(){return head('Profesionales','Asigna a cada cliente un profesional.',`<button class="primary" onclick="newPro()">+ Profesional</button>`)+`<div class="grid">${db.pros.map(p=>`<div class="card"><h2>${esc(p.name)}</h2><p class="muted">${esc(p.email)}</p>${badge(db.clients.filter(c=>c.pro===p.id).length+' clientes asignados')}<p class="small muted">Consulta y notas. Sin edición directa de planes.</p></div>`).join('')}</div>`}
+const pending=()=>db.orders.filter(o=>o.status==='Por preparar');function need(item,today=false){return pending().filter(o=>!today||o.date===TODAY).reduce((sum,o)=>{if(orderDiet(o))return sum;let p=serving(o);return sum+(item==='chicken'?p[0]/1000:item==='rice'?p[1]/3000:item==='veg'?p[2]/1000:(db.stock.find(x=>x.id===item)?.perPortion||0))},0)}
+function level(s){return !s.checked?['Por revisar','gray']:s.qty<need(s.id,true)?['Urgente','red']:s.qty<need(s.id)?['Por comprar','yellow']:['Cubierto','green']}
+function kitchen(){return head('Cocina y porciones','Los totales de arriba muestran lo que falta por preparar hoy. Al marcar listo bajan esos totales. Los créditos se descuentan al entregar.')+`<div class="card"><h2>Pollo en salsa verde</h2><p class="muted">Pedidos confirmados de la demo. Arroz: rendimiento supuesto 3:1, pendiente de validar.</p><div class="grid">${db.stock.slice(0,3).map(s=>`<div class="stat">${esc(s.name)} pendiente hoy<b>${need(s.id,true).toFixed(2)} ${s.unit}</b></div>`).join('')}</div></div><div class="card scroll"><table><tr><th>Fecha</th><th>Cliente</th><th>Pollo crudo</th><th>Arroz cocido</th><th>Verduras</th><th>Producción</th></tr>${db.orders.filter(o=>o.status!=='Entregado').map(o=>`<tr><td>${o.date}</td><td>${esc(client(o.client).name)}</td>${orderDiet(o)?`<td colspan="3">${dietRows(orderDiet(o).filter(r=>r.include))||'Sin preparación asignada'}</td>`:serving(o).map(v=>`<td>${v} g</td>`).join('')}<td><button ${''} onclick="toggleReady('${o.id}')">${o.status==='Por preparar'?'Marcar listo':'Volver a preparar'}</button></td></tr>`).join('')}</table><p class="small muted">Marcar listo no descuenta el paquete. Existencias: revisión y ajuste manual por Hada en esta versión.</p></div>`}
+function stock(){return purchaseDiet()+head('Insumos y compras','Registra ingredientes por separado y define su consumo por porción.', '<button class="primary" onclick="newStock()">+ Agregar insumo</button>')+`<div class="card scroll"><table><tr><th>Insumo</th><th>Prioridad</th><th>Disponible</th><th>Necesario</th><th>Faltante</th><th>En camino</th><th></th></tr>${[...db.stock].sort((a,b)=>['Urgente','Por comprar','Por revisar','Cubierto'].indexOf(level(a)[0])-['Urgente','Por comprar','Por revisar','Cubierto'].indexOf(level(b)[0])).map(s=>{let [l,col]=level(s);return `<tr><td><b>${esc(s.name)}</b><div class="small muted">${esc(s.unit)}</div></td><td>${badge(l,col)}</td><td>${s.checked?s.qty.toFixed(2):'Por revisar'}</td><td>${need(s.id).toFixed(2)}</td><td>${s.checked?Math.max(0,need(s.id)-s.qty).toFixed(2):'—'}</td><td>${s.ordered.toFixed(2)}</td><td><button onclick="editStock('${s.id}')">Revisar</button></td></tr>`}).join('')}</table><p class="small muted">Rojo: falta para hoy. Amarillo: falta para pedidos posteriores. Verde: cubierto. Gris: Hada debe confirmar. Comprar no cambia la existencia hasta recibir.</p></div>`}
+function delivery(){return head('Entregas y paquetes','Descuento manual al confirmar entrega, independiente de la ingesta.')+`<div class="card scroll"><table><tr><th>Fecha</th><th>Cliente</th><th>Saldo</th><th>Estado</th><th></th></tr>${db.orders.map(o=>`<tr><td>${o.date}</td><td>${esc(client(o.client).name)}</td><td>${client(o.client).total-client(o.client).used}</td><td>${badge(o.status,o.status==='Entregado'?'green':'gray')}</td><td><button ${o.status!=='Listo'?'disabled':''} onclick="deliver('${o.id}')">${o.status==='Entregado'?'Entregado':'Confirmar entrega'}</button></td></tr>`).join('')}</table></div>`}
+function service(){return head('Servicios y pagos','Los pagos se reciben fuera de maducapp. Sin pasarela de cobro.')+`<div class="card">${db.clients.map(c=>`<div class="list row"><div><b>${esc(c.name)}</b><p class="small muted">${c.total-c.used} créditos disponibles · ${c.active?'Activo':'Inactivo'}<br>Último plan: ${esc(c.lastPlan||'Por registrar')}</p></div><div class="controls"><button onclick="renew('${c.id}')">+ Agregar créditos</button><button onclick="toggleActive('${c.id}')">${c.active?'Desactivar':'Activar o renovar'}</button></div></div>`).join('')}<p class="small muted">En esta demo se registra el estado. El bloqueo real de acceso requiere conectar autenticación y servidor.</p></div>`}
+function form(title,body,action){$('modal').innerHTML=`<h2>${title}</h2><form onsubmit="event.preventDefault();${action}">${body}<div class="controls sp"><button type="button" onclick="document.getElementById('modal').close()">Cancelar</button><button class="primary">Guardar</button></div></form>`;$('modal').showModal()}
+const input=(id,label,value='',type='text')=>`<label for="${id}">${label}</label><input required id="${id}" type="${type}" value="${esc(value)}" ${type==='number'?'min="0" step="any"':''}>`;
+function finish(){save();$('modal').close();render();toast('Guardado en esta prueba')}
+function assign(id,v){if(role!=='admin')return;let c=client(id);audit(id,'Profesional asignado',professional(c.pro),professional(v));c.pro=v;save();render()}
+function noteStatus(id,v){if(role!=='admin')return;let n=db.notes.find(n=>n.id===id);audit(n.client,'Estado de nota',n.status,v);n.status=v;save();render()}
+function addNote(id){if(role!=='nutri'||!allowed(id))return;form('Nueva nota para administración','<label>Indica el ajuste y desde qué fecha aplica</label><textarea id="noteText" required maxlength="2000"></textarea>',`submitNote('${id}')`)}
+function submitNote(id){if(role!=='nutri'||!allowed(id))return;db.notes.unshift({id:uid(),client:id,pro,text:$('noteText').value,status:'Pendiente',date:new Date().toLocaleString('es-MX')});finish()}
+function editPortions(id){if(role!=='admin')return;let c=client(id);form('Corregir porciones',c.portions.map((v,i)=>input('portion'+i,['Pollo crudo (g)','Arroz cocido (g)','Verduras limpias (g)'][i],v,'number')).join('')+'<p class="small muted">Demo: afecta a pedidos por preparar. Los pedidos listos conservan la porción registrada al prepararlos.</p>',`submitPortions('${id}')`)}
+function submitPortions(id){if(role!=='admin')return;let c=client(id),v=[0,1,2].map(i=>Number($('portion'+i).value));audit(id,'Porciones (g)',c.portions.join(' / '),v.join(' / '));c.portions=v;finish()}
+function editMetrics(id){let c=client(id);form('Corregir registro de prueba',input('mw','Peso (kg)',c.weight,'number')+input('water','Agua registrada (ml)',c.water,'number'),`submitMetrics('${id}')`)}
+function submitMetrics(id){if(role!=='admin')return;let c=client(id);for(let [key,el] of [['weight','mw'],['water','water']]){let v=Number($(el).value);if(v!==c[key])audit(id,key==='weight'?'Peso':'Agua',c[key],v);c[key]=v}finish()}
+function ready(id){if(role!=='admin')return;let o=db.orders.find(o=>o.id===id);if(o.status!=='Por preparar')return;o.portions=[...serving(o)];if(orderDiet(o))o.dietRows=orderDiet(o).map(r=>({...r}));o.status='Listo';save();render()}
+function deliver(id){if(role!=='admin')return;let o=db.orders.find(o=>o.id===id),c=client(o.client);if(o.status!=='Listo')return;const already=db.orders.some(x=>x.client===o.client&&x.date===o.date&&x.status==='Entregado');if(!already&&c.used>=c.total)return toast('Sin saldo: revisar con administración');o.status='Entregado';o.deliveredAt=new Date().toISOString();if(!already){audit(c.id,'Créditos usados',c.used,c.used+1);c.used++;}save();render();toast('Entrega registrada; descontada una sola vez')}
+function toggleActive(id){if(role!=='admin')return;let c=client(id);if(!c.active)return renew(id);audit(id,'Servicio',c.active?'Activo':'Inactivo',c.active?'Inactivo':'Activo');c.active=!c.active;save();render()}
+function editStock(id){let s=db.stock.find(s=>s.id===id);form('Revisar '+esc(s.name),input('qty','Existencia actual ('+s.unit+')',s.qty,'number')+input('ordered','Compra pendiente de recibir ('+s.unit+')',s.ordered,'number')+input('received','Cantidad recibida ahora ('+s.unit+')',0,'number')+'<p class="small muted">La cantidad recibida se suma a la existencia y se resta de lo pendiente.</p>',`submitStock('${id}')`)}
+function submitStock(id){if(role!=='admin')return;let s=db.stock.find(s=>s.id===id),r=Number($('received').value);s.qty=Number($('qty').value)+r;s.ordered=Math.max(0,Number($('ordered').value)-r);s.checked=true;finish()}
+function newPro(){form('Alta de profesional',input('pn','Nombre')+input('pe','Correo','','email'),'submitPro()')}
+function submitPro(){if(role!=='admin')return;db.pros.push({id:uid(),name:$('pn').value,email:$('pe').value});finish()}
+function newClient(){form('Nuevo cliente',input('cn','Nombre')+'<label>Servicio</label><select id="ck"><option>Plan nutricional</option><option>Comida de oficina</option></select><label>Paquete</label><select id="ct"><option>1</option><option>5</option><option selected>20</option></select>','submitClient()')}
+function submitClient(){if(role!=='admin')return;db.clients.push({id:uid(),name:$('cn').value,kind:$('ck').value,total:Number($('ct').value),used:0,active:false,pro:'',water:0,goal:0,weight:0,checks:[false,false,false,false,false],note:'',portions:[0,0,0]});finish()}
+// Weekly menu is editorial planning; recipe costing and purchasing linkage are a next stage.
+const menuDate=d=>new Date(d+'T12:00:00');
+const dateKey=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const menuFields=['Desayuno','Colación 1','Comida principal','Colación 2','Cena'];
+if(!db.menus){db.menus={};['Pollo en salsa verde','Yakimeshi con pollo','Tortitas de pollo en salsa roja','Pollo al limón','Pollo deshebrado con verduras'].forEach((dish,i)=>{db.menus['2026-11-'+(23+i)]={meals:['Huevos con vegetales','Fruta de temporada',dish,'Yogurt con fruta','Ensalada con pollo'],side:'Arroz y verduras',water:['Jamaica','Limón','Pepino','Jamaica','Limón'][i],dessert:3,status:'Borrador'};});save()}
+let menuView='week',menuAnchor='2026-11-23',menuSelected='2026-11-23';
+const dayFull=d=>menuDate(d).toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+function weekDates(){let d=menuDate(menuAnchor);d.setDate(d.getDate()-(d.getDay()+6)%7);return Array.from({length:5},(_,i)=>{let x=new Date(d);x.setDate(d.getDate()+i);return dateKey(x)})}
+function changeMenuView(v){menuView=v;render()}
+function moveMenu(n){let d=menuDate(menuAnchor);if(menuView==='month'){d.setDate(1);d.setMonth(d.getMonth()+n)}else d.setDate(d.getDate()+7*n);menuAnchor=dateKey(d);menuSelected=menuView==='week'?weekDates()[0]:menuAnchor;render()}
+function selectMenu(d){menuSelected=d;render()}
+function menu(){let dates=weekDates(),month=menuDate(menuAnchor).toLocaleDateString('es-MX',{month:'long',year:'numeric'}),grid='';
+if(menuView==='week'){grid='<div class="menu-week">'+dates.map(d=>{let m=db.menus[d];return `<button class="week-day ${menuSelected===d?'selected':''}" onclick="selectMenu('${d}')"><b>${reminders(d).length?"🔔 ":""}${esc(menuDate(d).toLocaleDateString('es-MX',{weekday:'long',day:'numeric'}))}</b><span class="meal-name">${esc(m?.meals[2]||'Menú por definir')}</span>${m?`${badge(m.status,m.status==='Confirmado'?'green':'yellow')}<small>Guarnición<br>${esc(m.side||'Por definir')}</small><small>Agua<br>${esc(m.water||'Por definir')}</small><small>Postre de colación<br>${esc(m.meals[m.dessert]||'Por definir')}</small>`:'<small>Selecciona el día para planearlo.</small>'}</button>`}).join('')+'</div>'}else{let start=menuDate(menuAnchor);start.setDate(1);start.setDate(start.getDate()-(start.getDay()+6)%7);grid='<div class="scroll"><div class="menu-grid">'+['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'].map(v=>`<div class="day-label">${v}</div>`).join('')+Array.from({length:42},(_,i)=>{let x=new Date(start);x.setDate(start.getDate()+i);let d=dateKey(x),m=db.menus[d];return `<button class="menu-day ${menuSelected===d?'selected':''} ${x.getMonth()!==menuDate(menuAnchor).getMonth()?'outside':''}" onclick="selectMenu('${d}')"><b>${x.getDate()}</b><span class="menu-title">${esc(m?.meals[2]||'Sin menú')}</span>${reminders(d).length?'🔔 '+reminders(d).length:''}${m?`<span class="menu-pill">${esc(m.status)}</span>`:''}</button>`}).join('')+'</div></div>'}
+let m=db.menus[menuSelected];return head('Calendario de menú','La semana completa, de un vistazo. Menús ficticios para probar la planificación.')+`<div class="menu-toolbar"><div class="controls"><button aria-label="Periodo anterior" onclick="moveMenu(-1)">←</button><b style="padding:10px">${esc(menuView==='month'?month:dayFull(dates[0])+' — '+menuDate(dates[4]).getDate())}</b><button aria-label="Periodo siguiente" onclick="moveMenu(1)">→</button></div><div class="controls"><button aria-pressed="${menuView==='week'}" onclick="changeMenuView('week')">Semana</button><button aria-pressed="${menuView==='month'}" onclick="changeMenuView('month')">Mes</button></div></div><div class="menu-legend">${badge('Borrador','yellow')}${badge('Confirmado','green')}<span class="small muted">Confirmación interna; no envía mensajes ni sustituye la revisión nutricional.</span></div>${grid}<div class="card menu-detail"><div class="row"><div><h2>${esc(dayFull(menuSelected))}</h2>${m?badge(m.status,m.status==='Confirmado'?'green':'yellow'):badge('Sin menú','gray')}</div>${role==='admin'?`<button class="primary" onclick="editMenu('${menuSelected}')">${m?'Editar menú':'Crear menú'}</button>`:''}</div>${m?`<div class="two sp"><section><h3>Plan del día</h3>${menuFields.map((t,i)=>`<div class="list"><span class="small muted">${t}</span><div>${esc(m.meals[i]||'Por definir')}</div></div>`).join('')}</section><section><h3>Comida de oficina</h3><p><b>Principal:</b> ${esc(m.meals[2])}</p><p><b>Guarnición:</b> ${esc(m.side)}</p><p><b>Agua:</b> ${esc(m.water)}</p><p><b>Postre:</b> ${esc(m.meals[m.dessert])}<br><span class="small muted">Misma preparación de ${menuFields[m.dessert].toLowerCase()}.</span></p><p class="small muted">Las porciones de cada cliente se conservan por separado. Este calendario todavía no recalcula recetas, inventario ni pedidos.</p></section></div>`:'<p class="empty">Aún no hay un menú para este día.</p>'}</div>`+remindersPanel()}
+function editMenu(d){if(role!=='admin')return;let m=db.menus[d]||{meals:['','','','',''],side:'',water:'',dessert:3,status:'Borrador'};form('Menú · '+esc(dayFull(d)),`<div class="menu-form">${menuFields.map((t,i)=>input('meal'+i,t,m.meals[i])).join('')}${input('menuSide','Guarnición de la comida principal',m.side)}${input('menuWater','Agua del día',m.water)}<label>El postre de oficina sale de</label><select id="menuDessert"><option value="1" ${m.dessert===1?'selected':''}>Colación 1</option><option value="3" ${m.dessert===3?'selected':''}>Colación 2</option></select><label>Estado del menú</label><select id="menuStatus"><option ${m.status==='Borrador'?'selected':''}>Borrador</option><option ${m.status==='Confirmado'?'selected':''}>Confirmado</option></select></div>`,`submitMenu('${d}')`)}
+function submitMenu(d){if(role!=='admin')return;let m={meals:[0,1,2,3,4].map(i=>$('meal'+i).value.trim()),side:$('menuSide').value.trim(),water:$('menuWater').value.trim(),dessert:Number($('menuDessert').value),status:$('menuStatus').value};if(!m.meals.every(Boolean)||!m.side||!m.water)return toast('Completa los platillos, guarnición y agua');if(![1,3].includes(m.dessert))return;db.menus[d]=m;finish()}
+
+db.reminders ??= [];
+db.versions ??= [];
+let servingDay = TODAY;
+const activeVersion = (id,date) => db.versions.filter(v=>v.id===id&&v.date<=date).sort((a,b)=>b.date.localeCompare(a.date)).at(0);
+const serving = o => o.portions || activeVersion(o.client,o.date)?.grams || client(o.client).portions;
+function addReminder(){
+  if(role!=='admin'||!$('reminder').value.trim())return;
+  db.reminders.push({id:uid(),date:menuSelected,title:$('reminder').value.trim(),repeat:$('repeat').value});
+  save();render();
+}
+function reminders(date){
+  return db.reminders.filter(r=>r.date===date||(r.repeat==='weekly'&&date>=r.date&&menuDate(r.date).getDay()===menuDate(date).getDay()));
+}
+function remindersPanel(){
+  return '<div class="card"><h2>Recordatorios del día</h2>'+reminders(menuSelected).map(r=>'<p>🔔 '+esc(r.title)+(r.repeat==='weekly'?' · Semanal':'')+' '+(role==='admin'?'<button onclick="removeReminder(\''+r.id+'\')">Quitar</button>':'')+'</p>').join('')+(role==='admin'?'<form onsubmit="event.preventDefault();addReminder()"><label for="reminder">Nuevo recordatorio</label><input id="reminder" required maxlength="140"><label for="repeat">Repetición</label><select id="repeat"><option value="once">Una vez</option><option value="weekly">Cada semana</option></select><button class="sp">Guardar recordatorio</button></form>':'')+'</div>';
+}
+function removeReminder(id){
+  if(role!=='admin')return;
+  db.reminders=db.reminders.filter(r=>r.id!==id);save();render();
+}
+function workbench(){
+  const orders=db.orders.filter(o=>o.date===servingDay&&o.status!=='Entregado');
+  const dish=db.menus[servingDay]?.meals[2]||'Pollo en salsa verde · ejemplo';
+  return head('Mesa de porcionado','Cantidades por cliente, listas para pesar.')+
+    '<div class="card"><label for="servingDay">Fecha de preparación</label><input type="date" id="servingDay" value="'+esc(servingDay)+'" onchange="servingDay=this.value;render()"><h2 class="sp">'+esc(dish)+'</h2></div><div class="grid">'+
+    orders.map(o=>'<div class="card"><h2>'+esc(client(o.client).name)+'</h2>'+(orderDiet(o)?dietRows(orderDiet(o).filter(r=>r.include)):serving(o).map((g,i)=>'<div class="list row"><span>'+['Pollo crudo','Arroz cocido','Verduras limpias'][i]+'</span><strong style="font-size:25px">'+g+' g</strong></div>').join(''))+'<button class="primary sp" '+''+' onclick="toggleReady(\''+o.id+'\')">'+(o.status==='Listo'?'Volver a preparar':'Marcar porcionado')+'</button></div>').join('')+
+    (orders.length?'':'<p>Sin pedidos pendientes para esta fecha.</p>')+'</div>';
+}
+function programPanel(c){
+  const versions=db.versions.filter(v=>v.id===c.id).sort((a,b)=>b.date.localeCompare(a.date));
+  return '<div class="card"><h2>Dieta y entrenamiento</h2>'+ (role==='admin'?'<button onclick="editProgram(\''+c.id+'\')">Programar cambio</button>':'')+
+  versions.map(v=>'<div class="list"><b>Desde '+esc(v.date)+'</b><p>Porciones (g): '+v.grams.join(' / ')+'</p><p>'+esc(v.diet||'Sin instrucciones adicionales')+'</p><h3>Rutina de gimnasio</h3><div style="white-space:pre-wrap">'+esc(v.routine||'Sin rutina')+'</div></div>').join('')+'</div>';
+}
+function editProgram(id){
+  if(role!=='admin')return;
+  draftDiet=null;
+  const c=client(id),v=activeVersion(id,TODAY);
+  form('Programar dieta y entrenamiento',input('effective','Aplica desde',TODAY,'date')+
+    '<label for="dietText">Indicaciones de dieta</label><textarea id="dietText">'+esc(v?.diet)+'</textarea><button type="button" onclick="previewDiet()">Revisar ingredientes</button><p>Marca solo lo que Hada prepara o empaca. Revisa alternativas, unidades y pesos crudo o cocido.</p><div id="dietPreview"></div><label for="gymText">Rutina de gimnasio</label><textarea id="gymText">'+esc(v?.routine)+'</textarea>',"saveProgram('"+id+"')");
+}
+function saveProgram(id){
+  if(role!=='admin')return;
+  const date=$('effective').value;
+  if(db.versions.some(v=>v.id===id&&v.date===date))return toast('Ya hay un cambio para esa fecha.');
+  if(!draftDiet?.rows.length||draftDiet.source!==$('dietText').value)return toast('Primero revisa los ingredientes del texto actual.');
+  if(draftDiet.rows.some(r=>!r.ingredient.trim()))return toast('Completa los nombres de los ingredientes.');
+  const unresolved = draftDiet.rows.find(r => hasDietChoice(r.ingredient));
+  if(unresolved)return toast('Confirma con el nutriólogo una sola opción para '+unresolved.meal+' y corrige el renglón.');
+  db.versions.push({id,date,rows:draftDiet.rows,grams:client(id).portions,diet:$('dietText').value,routine:$('gymText').value});
+  audit(id,'Dieta y entrenamiento','Plan anterior conservado','Cambio desde '+date);
+  finish();
+}
+
+if(db.stock.some(s=>s.id==='sauce')){
+  db.stock=db.stock.filter(s=>s.id!=='sauce');
+  for(const [id,name,perPortion] of [['tomato','Tomate verde',.06],['onion','Cebolla',.015],['garlic','Ajo',.002]]){
+    db.stock.push({id,name,unit:'kg',qty:0,ordered:0,checked:false,perPortion});
+  }
+  save();
+}
+function toggleReady(id){
+  if(role!=='admin')return;
+  const order=db.orders.find(o=>o.id===id);
+  if(order.status==='Por preparar')return ready(id);
+  if(order.status!=='Listo')return;
+  order.status='Por preparar';
+  delete order.portions;delete order.dietRows;
+  save();render();
+}
+function newStock(){
+  form('Agregar insumo',input('stockName','Ingrediente')+
+    '<label for="stockUnit">Unidad</label><select id="stockUnit"><option>kg</option><option>L</option><option>pieza</option></select>'+
+    input('stockUsage','Consumo por porción en esa unidad',0,'number')+
+    input('stockQty','Existencia revisada',0,'number')+
+    '<p class="small muted">La demo aplica el consumo a cada pedido pendiente del lote de ejemplo.</p>','saveNewStock()');
+}
+function saveNewStock(){
+  if(role!=='admin')return;
+  const name=$('stockName').value.trim();
+  if(!name||db.stock.some(s=>s.name.toLowerCase()===name.toLowerCase()))return toast('Escribe un ingrediente nuevo.');
+  db.stock.push({id:uid(),name,unit:$('stockUnit').value,qty:Number($('stockQty').value),checked:true,ordered:0,perPortion:Number($('stockUsage').value)});
+  finish();
+}
+function renew(id){
+  if(role!=='admin')return;
+  form('Registrar plan y créditos',input('renewPlan','Plan contratado',client(id).lastPlan||client(id).kind)+
+    '<label for="renewDays">Créditos a agregar</label><input id="renewDays" required type="number" min="1" step="1"><p>1 crédito equivale a 1 día entregado. El saldo anterior se conserva.</p>',"saveRenewal('"+id+"')");
+}
+function saveRenewal(id){
+  if(role!=='admin')return;
+  const customer=client(id),credits=Number($('renewDays').value),plan=$('renewPlan').value.trim();
+  if(!plan||!Number.isSafeInteger(credits)||credits<1)return toast('Indica el plan y un número entero de créditos.');
+  audit(id,'Renovación: '+plan,customer.total-customer.used,customer.total+credits-customer.used);
+  customer.total+=credits;
+  customer.lastPlan=plan;
+  customer.active=true;
+  finish();
+}
+
+let demoClient = 'c1';
+function renderClient(){
+  const eligible = db.clients.filter(c => c.kind === 'Plan nutricional');
+  const customer = eligible.find(c => c.id === demoClient) || eligible[0];
+  $('professional').hidden = true;
+  $('nav').innerHTML = '<button class="active">Mi dashboard</button>';
+  const selector = '<label for="demoClient">Cliente de prueba</label><select id="demoClient" onchange="demoClient=this.value;render()">' +
+    eligible.map(c => `<option value="${esc(c.id)}" ${c.id===customer?.id?'selected':''}>${esc(c.name)}</option>`).join('') + '</select>';
+  let html = head('Mi dashboard','Seguimiento de tu plan') + '<div class="card">'+selector+'</div>';
+  if(!customer?.active){
+    $('content').innerHTML = html + '<div class="card">Servicio inactivo o sin asignar.</div>';
+    return;
+  }
+  const version = activeVersion(customer.id,TODAY);
+  html += `<div class="card"><h2>${esc(customer.name)}</h2><p>Agua registrada: ${customer.water} ml</p><p>Meta de agua: ${customer.goal || 'Por definir'} ${customer.goal?'ml':''}</p><p>Último peso: ${customer.weight ? customer.weight+' kg' : 'Sin registrar'}</p><p>Créditos disponibles: ${customer.total-customer.used}</p></div>
+    <div class="card"><h2>Comidas registradas</h2>${customer.checks.map((checked,i)=>`<div class="list row"><span>Comida ${i+1}</span>${badge(checked?'Registrada':'Sin registrar',checked?'green':'gray')}</div>`).join('')}</div>
+    <div class="card"><h2>Mi dieta y entrenamiento</h2><p class="muted">Plan vigente al ${TODAY} en la demo.</p><div style="white-space:pre-wrap">${version?.rows?dietRows(version.rows):esc(version?.diet || 'Indicaciones de dieta por asignar.')}</div><h3 class="sp">Rutina de gimnasio</h3><div style="white-space:pre-wrap">${esc(version?.routine || 'Rutina por asignar.')}</div></div>
+    <div class="card"><h2>Notas de mi día</h2><p>${esc(customer.note || 'Sin notas personales.')}</p></div>`;
+  $('content').innerHTML = html;
+}
+
+let draftDiet=null;
+function readDiet(text){
+  let meal='Indicaciones';
+  return text.split(/\r?\n/).flatMap(raw=>{
+    const line=raw.trim();
+    if(!line||/^[•.\s]+$/.test(line))return [];
+    const title=line.replace(/^\*+|\*+$/g,'');
+    if(/^\*.+\*$/.test(line)||/^(comida\s+\d+|al despertar|.*(?:antes de entrenar|durante el entrenamiento|despu[eé]s de entrenar))$/i.test(title)){meal=title;return []}
+    return line.split(/\s+\/\s+/).map(part=>{
+      const m=part.match(/^(\d+\s+\d+\/\d+|\d+\/\d+|\d+(?:[.,]\d+)?)\s*(?:(gr(?:amos?)?|kg|g|ml|l|tazas?|cucharadas?(?: cafetera)?|rebanadas?|scoops?|sobres?|c[aá]psulas?|tortillas?|piezas?)\b\s*)?(.+?)\.?$/i);
+      let unit=m?.[2]?.toLowerCase()|| (m?'pieza':'');
+      unit=unit.replace(/^gr.*$/,'g').replace(/s$/,'');
+      return {meal,ingredient:m?.[3]||part,amount:m?.[1]||'',unit,include:false};
+    });
+  });
+}
+function hasDietChoice(ingredient){
+  return /\s(?:o|ó|u)\s|\S\s*\/\s*\S/i.test(ingredient);
+}
+function previewDiet(){
+  const source=$('dietText').value;
+  draftDiet={source,rows:readDiet(source)};
+  $('dietPreview').innerHTML=draftDiet.rows.map((r,i)=>`<fieldset class="list"><legend>${esc(r.meal)}</legend>${hasDietChoice(r.ingredient)?'<p>Confirma una sola opción con el nutriólogo.</p>':''}
+    <label>Ingrediente o indicación<input aria-label="Ingrediente" value="${esc(r.ingredient)}" oninput="draftDiet.rows[${i}].ingredient=this.value"></label>
+    <div class="grid"><label>Cantidad<input value="${esc(r.amount)}" oninput="draftDiet.rows[${i}].amount=this.value"></label>
+    <label>Unidad<input value="${esc(r.unit)}" oninput="draftDiet.rows[${i}].unit=this.value"></label></div>
+    <label><input type="checkbox" onchange="draftDiet.rows[${i}].include=this.checked"> Preparar o empacar</label></fieldset>`).join('');
+}
+function dietRows(rows){
+  return rows.map(r=>`<p><strong>${esc(r.meal)}</strong> · ${esc([r.amount,r.unit,r.ingredient].filter(Boolean).join(' '))}</p>`).join('');
+}
+function orderDiet(o){return o.dietRows ?? activeVersion(o.client,o.date)?.rows}
+function purchaseDiet(){
+  const totals=new Map(),review=new Set();
+  for(const order of pending()){
+    for(const r of orderDiet(order)||[]){
+      if(!r.include)continue;
+      const n=r.amount.trim().split(/\s+/).reduce((sum,p)=>{const [a,b]=p.replace(',','.').split('/');return sum+Number(a)/(b===undefined?1:Number(b))},0);
+      if(!r.amount.trim()||!r.unit.trim()||!(n>0)||!Number.isFinite(n)||/\s[oó]\s|\bensalada\b|\barroz\b/i.test(r.ingredient)){review.add([r.amount,r.unit,r.ingredient].join(' '));continue}
+      const key=r.ingredient.trim().toLowerCase()+' · '+r.unit.trim().toLowerCase();
+      totals.set(key,(totals.get(key)||0)+n);
+    }
+  }
+  return '<div class="card"><h2>Necesidades de dietas importadas</h2><p>Totales de pedidos por preparar, antes de descontar existencias.</p>'+[...totals].map(([k,n])=>'<p>'+esc(k)+' · '+n.toLocaleString('es-MX')+'</p>').join('')+([...review].length?'<h3>Confirmar opción, receta o rendimiento</h3><p>'+[...review].map(esc).join('<br>')+'</p>':'')+'</div>';
+}
+
+$('role').onchange=e=>{role=e.target.value;go('home')};$('professional').onchange=e=>{pro=e.target.value;go('home')};render();
+</script></html>
